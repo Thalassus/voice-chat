@@ -18,10 +18,12 @@ public final class PlayerMicrophoneEvent implements PlayerInstanceEvent, Cancell
 
     private byte @NotNull[] audio;
     private boolean cancelled;
+    private long sequenceNumber;
 
-    public PlayerMicrophoneEvent(@NotNull Player player, byte @NotNull[] audio) {
+    public PlayerMicrophoneEvent(@NotNull Player player, byte @NotNull[] audio, long sequenceNumber) {
         this.player = player;
         this.audio = audio;
+        this.sequenceNumber = sequenceNumber;
     }
 
     @Override
@@ -55,4 +57,7 @@ public final class PlayerMicrophoneEvent implements PlayerInstanceEvent, Cancell
         this.cancelled = cancel;
     }
 
+    public long getSequenceNumber() {
+        return this.sequenceNumber;
+    }
 }

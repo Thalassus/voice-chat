@@ -233,7 +233,7 @@ public final class VoiceServer {
     private void handle(@NotNull Player player, @NotNull MicrophonePacket packet) {
         // todo: implement groups?
 
-        PlayerMicrophoneEvent event = new PlayerMicrophoneEvent(player, packet.data());
+        PlayerMicrophoneEvent event = new PlayerMicrophoneEvent(player, packet.data(), packet.sequenceNumber());
         EventDispatcher.callCancellable(event, () -> {
             PlayerSoundPacket soundPacket = new PlayerSoundPacket(
                     player.getUuid(), // the channel is the sender's UUID
