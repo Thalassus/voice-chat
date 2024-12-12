@@ -17,6 +17,11 @@ public record VoiceStatePacket(@NotNull VoiceState state) implements Packet {
     }
 
     @Override
+    public void read(@NotNull NetworkBuffer buffer) {
+
+    }
+
+    @Override
     public @NotNull String id() {
         return "voicechat:player_state";
     }

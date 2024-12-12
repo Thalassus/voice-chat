@@ -12,10 +12,6 @@ import dev.lu15.voicechat.network.voice.VoiceServer;
 import dev.lu15.voicechat.network.voice.encryption.SecretUtilities;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.security.SecureRandom;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
 import java.util.UUID;
 import net.kyori.adventure.key.Key;
 import net.minestom.server.MinecraftServer;
@@ -23,9 +19,8 @@ import net.minestom.server.entity.Player;
 import net.minestom.server.event.Event;
 import net.minestom.server.event.EventDispatcher;
 import net.minestom.server.event.EventNode;
-import net.minestom.server.event.player.PlayerDisconnectEvent;
 import net.minestom.server.event.player.PlayerPluginMessageEvent;
-import net.minestom.server.utils.PacketUtils;
+import net.minestom.server.utils.PacketSendingUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
@@ -113,7 +108,7 @@ final class VoiceChatImpl implements VoiceChat {
                 null
         );
         player.setTag(Tags.PLAYER_STATE, state);
-        PacketUtils.broadcastPlayPacket(this.packetHandler.write(new VoiceStatePacket(state)));
+        PacketSendingUtils.broadcastPlayPacket(this.packetHandler.write(new VoiceStatePacket(state)));
 
         EventDispatcher.call(new PlayerUpdateVoiceStateEvent(player, state));
     }

@@ -23,7 +23,7 @@ public final class AES {
     private static final @NotNull String CIPHER = "AES/CBC/PKCS5Padding";
 
     public static byte @NotNull[] getBytesFromUuid(@NotNull UUID uuid) {
-        NetworkBuffer buffer = new NetworkBuffer(16);
+        NetworkBuffer buffer = NetworkBuffer.resizableBuffer();
         buffer.write(NetworkBuffer.UUID, uuid);
         byte[] bytes = new byte[16];
         buffer.copyTo(0, bytes, 0, 16);

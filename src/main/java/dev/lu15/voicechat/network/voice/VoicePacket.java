@@ -5,7 +5,7 @@ import net.minestom.server.coordinate.Pos;
 import net.minestom.server.network.NetworkBuffer;
 import org.jetbrains.annotations.NotNull;
 
-public interface VoicePacket extends NetworkBuffer.Writer {
+public interface VoicePacket {
 
     @NotNull NetworkBuffer.Type<Point> POSITION = new NetworkBuffer.Type<>() {
         @Override
@@ -31,4 +31,5 @@ public interface VoicePacket extends NetworkBuffer.Writer {
         return 10_000;
     }
 
+    void write(@NotNull NetworkBuffer buffer);
 }
